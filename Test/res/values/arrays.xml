@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="corbates">
+		<item>Corbata1</item>
+		<item>Corbata2</item>
+		<item>Corbata3</item>
+		<item>Corbata4</item>
+	</string-array>
+</resources>

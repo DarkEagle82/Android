@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Programa Manipulació</string>
+    <string name="eleccio">Elegir Etiqueta o Corbata</string>
+    <string name="enviar">Enviar</string>
+</resources>
