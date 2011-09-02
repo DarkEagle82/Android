@@ -1,10 +1,13 @@
 package nucl3ar.net.test;
 
+import nucl3ar.net.test.R;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Debug;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -21,7 +24,9 @@ public class TestActivity extends Activity {
         
         Button enviar = (Button) findViewById(R.id.button1);
         
-        Spinner sp = (Spinner) findViewById(R.id.spinner1);
+        final Spinner sp = (Spinner) findViewById(R.id.spinner1);
+        final ImageView image = (ImageView) findViewById(R.id.test_image);
+        
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
                 this, R.array.corbates, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -31,9 +36,21 @@ public class TestActivity extends Activity {
            
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, 
             		int position, long id) {
-                        	Toast.makeText(parentView.getContext(), "Has sel·leccionat " +
-            	          parentView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
             	
+            			int index = sp.getSelectedItemPosition();
+                        	
+            			Toast.makeText(parentView.getContext(), "Has sel·leccionat " +
+            	          parentView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
+            			Log.d("Testing", String.format("%d", index));
+            			
+                      // Depending on index you display the image ...
+                        if(index==0)
+                        	image.setImageResource(R.drawable.test);
+                          //  image.setBackgroundDrawable(getResources().getDrawable(R.drawable.test));
+                        else if(index==1)
+                        	image.setImageResource(R.drawable.test2);
+                        //    image.setBackgroundDrawable(getResources().getDrawable(R.drawable.test2));
+                        	
             	    
             }
                                  
