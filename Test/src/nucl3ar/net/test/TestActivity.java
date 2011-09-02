@@ -1,10 +1,13 @@
 package nucl3ar.net.test;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import nucl3ar.net.test.R;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.Debug;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.util.Log;
@@ -41,6 +44,7 @@ public class TestActivity extends Activity {
                         	
             			Toast.makeText(parentView.getContext(), "Has sel·leccionat " +
             	          parentView.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
+            			
             			Log.d("Testing", String.format("%d", index));
             			
                       // Depending on index you display the image ...
@@ -62,11 +66,22 @@ public class TestActivity extends Activity {
         
         enviar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                ProgressDialog dialog = ProgressDialog.show(TestActivity.this, "", 
-                        "Enviant. Espera ...", true);
+            	int index = sp.getSelectedItemPosition();
+                Log.d("Testing", String.format("Al enviar, el index es: %d", index));
+                try { 
+                	Process process = Runtime.getRuntime().exec("cat /proc/sys/net/ipv4/ip_forward >> \\\\192.168.1.10\\c\\ETIQUETAS\\CAIXA_LINEADprova.LAB");
+                	Log.d("Testing", String.format("%s", process));
+                }
+                catch (IOException e) { 
+                		e.printStackTrace(); 
+                		}
+        //       ProgressDialog dialog = ProgressDialog.show(TestActivity.this, "", 
+        //                "Enviant. Espera ...", true);
                 }
         }); // TODO new thread
         
+        // Runtime.getruntime
+        // os.writeBytes
         
    
         // Elegim l'imatge a Mostrar
